@@ -1,5 +1,6 @@
 package com.example.auth.entity;
 
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,7 +26,7 @@ public class User {
     private String email;
 
     // Храним роли как JSONB напрямую
-    @Type(JsonType.class)
-    @Column(columnDefinition = "jsonb")
+    @Type(JsonBinaryType.class)
+    @Column(columnDefinition = "jsonb", nullable = false)
     private List<String> roles;
 }
